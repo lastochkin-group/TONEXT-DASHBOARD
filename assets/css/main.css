@@ -1,0 +1,46 @@
+@import "bootstrap/scss/bootstrap-grid.scss";
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #12172D;
+    color: #12172D;
+    overflow: hidden;
+}
+
+:root {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #2A3772, transparent);
+}
+
+.gameView {
+    overflow-y: auto;
+    height: var(--tg-viewport-stable-height, 100vh);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
