@@ -18,7 +18,7 @@
       <WalletButton />
     </div>
 
-    <div class="flex flex-col gap-y-6">
+    <div class="flex flex-col gap-y-6 max-sm:pt-6">
       <h3 class="max-sm:text-xl text-2xl font-medium max-sm:px-4">История:</h3>
 
       <div v-if="transactions.length > 0" class="flex flex-col gap-y-2.5 max-sm:bg-white rounded-2xl max-sm:py-4">

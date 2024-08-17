@@ -19,7 +19,7 @@
       <WalletButton />
     </div>
 
-    <div class="flex flex-col gap-y-6 max-sm:px-4">
+    <div class="flex flex-col gap-y-6 max-sm:px-4 max-sm:pt-6">
       <h3 class="max-sm:text-xl text-2xl font-medium">Поддержка</h3>
 
       <div class="flex max-lg:flex-col justify-between gap-x-4 gap-y-2">

@@ -78,7 +78,7 @@
         />
       </div>
     </aside>
-    <main class="bg-white max-sm:pb-[100px] flex-col relative max-sm:bg-[#EFEFF4] max-sm:rounded-none max-sm:px-0 px-8 py-4 rounded-l-3xl flex items-start w-full transition-all gameView">
+    <main class="bg-white max-sm:pb-[180px] flex-col relative max-sm:bg-[#EFEFF4] max-sm:rounded-none max-sm:px-0 px-8 py-4 max-sm:pt-0 rounded-l-3xl flex items-start w-full transition-all gameView">
       <NuxtPage />
 
       <menu class="fixed bg-[#EFEFF4] z-20 sm:hidden left-0 right-0 bottom-0 pb-6 pt-2 px-4">
