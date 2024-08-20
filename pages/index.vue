@@ -1,16 +1,81 @@
 <script setup>
+
   import Crumbs from '~/components/UI/Crumbs/Crumbs.vue'
   import WalletButton from '~/components/UI/Wallet/WalletButton.vue'
   import { Icon } from '@iconify/vue/dist/iconify.js'
+  
+  import Modal from '~/components/Modal/Modal.vue'
+  import Withdraw from '../components/Modal/Content/Withdraw.vue'
+  import Processing from '../components/Modal/Content/Processing.vue'
+  import Withdraw_error from '../components/Modal/Content/Withdraw_error.vue'
+  import Success_order from '../components/Modal/Content/Success_order.vue'
+  import Deposit from '../components/Modal/Content/Deposit.vue'
+
+  import { reactive, ref } from 'vue'
 
   const contracts = [
     { id: 0, total_invest: 12000, total_earned: 15, days_util: 28 }
   ]
+
+  const isOpenModal = ref(false)
+
+  const modals = reactive({
+    withdraw: false,
+    processing: false,
+    withdraw_error: false,
+    success_order: false,
+    deposit: false
+  })
+
 </script>
 
 <template>
 
   <div class="flex flex-col w-full gap-y-4">
+    <Modal
+      :isOpen="isOpenModal"
+      @close="() => {
+        isOpenModal = false
+        modals.withdraw = false
+        modals.processing = false
+        modals.withdraw_error = false
+        modals.success_order = false
+        modals.deposit = false
+      }"
+    >
+      <Withdraw
+        v-if="modals.withdraw"
+        @close="() => {
+          isOpenModal = false
+          modals.withdraw = false
+        }"
+      />
+
+      <Processing
+        v-if="modals.processing"
+      />
+
+      <Withdraw_error
+        v-if="modals.withdraw_error"
+        @close="() => {
+          isOpenModal = false
+          modals.withdraw_error = false
+        }"
+      />
+
+      <Success_order
+        v-if="modals.success_order"
+        @close="() => {
+          isOpenModal = false
+          modals.success_order = false
+        }"
+      />
+
+      <Deposit
+        v-if="modals.deposit"
+      />
+    </Modal>
+
     <div class="flex w-full justify-between max-sm:hidden">
       <Crumbs 
         page="Главная"
@@ -40,12 +105,12 @@
             <span class="text-lg">~375,921$</span>
 
             <div class="flex justify-between gap-x-2 w-full sm:hidden mt-4">
-              <button class="w-full bg-white h-[40px] flex text-[14px] rounded-full font-medium justify-center items-center gap-x-2 text-text_color">
+              <button @click="() => { isOpenModal = true; modals.deposit = true }" class="w-full bg-white h-[40px] z-[1] flex text-[14px] rounded-full font-medium justify-center items-center gap-x-2 text-text_color">
                 <Icon icon="carbon:flash" class="text-blue text-[20px]" />
                 <span>Стейк</span>
               </button>
 
-              <button class="w-full bg-white h-[40px] flex text-[14px] rounded-full font-medium justify-center items-center gap-x-2 text-text_color">
+              <button @click="() => { isOpenModal = true; modals.withdraw = true }" class="w-full z-[1] bg-white h-[40px] flex text-[14px] rounded-full font-medium justify-center items-center gap-x-2 text-text_color">
                 <Icon icon="carbon:flash" class="text-blue text-[20px]" />
                 <span>Вывод</span>
               </button>
@@ -193,7 +258,7 @@
             </div>
 
             <div class="flex justify-between gap-x-2 w-full">
-              <button class="w-1/2 h-[50px] flex justify-center items-center rounded-full bg-blue border-blue border-[1px] text-white font-semibold">Вывести</button>
+              <button @click="() => { isOpenModal = true; modals.withdraw = true }" class="w-1/2 h-[50px] flex justify-center items-center rounded-full bg-blue border-blue border-[1px] text-white font-semibold">Вывести</button>
               <button class="w-1/2 h-[50px] flex justify-center items-center rounded-full border-blue border-[1px] text-blue bg-[#F7F9FB] max-sm:bg-transparent font-semibold">Реинвест</button>
             </div>
 

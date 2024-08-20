@@ -1,0 +1,97 @@
+<script setup>
+
+    import { Icon } from '@iconify/vue/dist/iconify.js'
+
+    import { ref } from 'vue'
+
+    import { useI18n } from 'vue-i18n'
+
+    const { t } = useI18n()
+
+    const stakeAmount = ref(0)
+    const stakeEndDays = ref(0)
+
+    const emit = defineEmits(['close'])
+
+</script>
+
+<template>
+    <div class="flex flex-col gap-y-4 relative overflow-hidden justify-between w-full">
+          <div class="flex gap-x-2.5 items-center">
+            <span class="bg-[#0098E910] shrink-0 w-[45px] aspect-square rounded-2xl justify-center items-center flex text-[20px] text-blue">
+              <Icon icon="basil:wallet-outline" />
+            </span>
+
+            <span class="text-[14px] font-medium">Добавить депозит</span>
+          </div>
+
+          <div class="flex flex-col justify-between items-center gap-4">
+              <div class="flex w-full flex-col gap-y-4">
+
+                  <div class="flex flex-col gap-y-2 items-start">
+                      <label class="text-[12px]">{{ $t('INVEST_AMOUNT') }}</label>
+
+                      <div class="bg-[#F7F9FB] w-full flex items-center gap-x-2 text-[14px] px-3 rounded-full">
+                          <span class="flex justify-center items-center rounded-full bg-blue w-[24px] aspect-square text-white shrink-0">
+                              <Icon icon="token:ton" />
+                          </span>
+
+                          <input v-model.number="stakeAmount" type="number" placeholder="0" class="w-full bg-transparent h-[50px] outline-none" />
+
+                          <button class="bg-white text-[#70758E] px-2 py-1 rounded-xl">{{ $t('MAX_FRASE') }}</button>
+                      </div>
+                  </div>
+
+                    <div class="flex flex-col gap-y-2 items-start">
+                        <label class="text-[12px]">{{ $t('INVEST_DAYS') }}</label>
+
+                        <div class="bg-[#F7F9FB] w-full flex items-center gap-x-2 text-[14px] px-3 rounded-full">
+                            <span class="flex justify-center items-center rounded-full w-[24px] aspect-square shrink-0">
+                                <Icon icon="solar:calendar-linear" class="text-blue text-[20px]" />
+                            </span>
+
+                            <input v-model.number="stakeEndDays" type="number" placeholder="0" class="w-full bg-transparent h-[50px] outline-none" />
+
+                            <span class="text-[#70758E] px-2 py-1 rounded-xl">{{ $t('DAY_FRASE')}}</span>
+                        </div>
+                    </div>
+
+                    <button class="h-[50px] bg-blue relative rounded-full text-white justify-center flex gap-x-4 items-center px-2">
+                        <span class="text-[14px] font-bold">{{ $t('MAKE_DEPOSIT') }}</span>
+                        <span class="h-[40px] absolute right-2 aspect-square bg-white flex justify-center items-center rounded-full">
+                            <Icon icon="maki:arrow" class="text-[#12172D] text-[16px]" />
+                        </span>
+                    </button>
+
+                </div>
+
+                <div class="rounded-2xl bg-[#F7F9FB] overflow-hidden items-start relative flex flex-col gap-y-2 text-[14px] p-4 w-full">
+                    <div class="flex flex-col items-start">
+                        <span>{{ $t('EVERY_DAY_CREDIT') }}</span>
+                        <span class="font-extrabold text-3xl text-blue">12%</span>
+                    </div>
+
+                    <div class="flex items-center gap-x-2">
+                        <div class="flex flex-col items-start">
+                            <span class="text-[#70758E]">{{ $t('EVERY_DAY_CREDIT_2') }}</span>
+                            <span class="font-semibold text-base">12 TON</span>
+                        </div>
+
+                        <div class="flex flex-col items-start">
+                            <span class="text-[#70758E]">{{ $t('EVERY_WEEK_CREDIT') }}</span>
+                            <span class="font-semibold text-base">450 TON</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-start">
+                        <span class="text-[#70758E]">{{ $t('FULL_PERIOD_CREDIT') }}</span>
+                        <span class="font-semibold text-base">12,928 TON</span>
+                    </div>
+
+                    <div class="absolute left-0 right-0 bottom-0">
+                        <img src="../../../assets/images/lines.svg" class="w-full" />
+                    </div>
+                </div>
+            </div>
+        </div>
+</template>
